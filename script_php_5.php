@@ -1,33 +1,32 @@
 <?php
-function showArrayInfo(){
-    $amount = intval(readline("Type a number : "));
-    if($amount <=0){
-        echo'Wrong number '.PHP_EOL;
-        return;
-    }
-    $arr = [];
-    for ($i = 0; $i < $amount; $i++){
-        $random = rand(20, 100);
-        array_push($arr, $random);
-    }
+$tab[] = null;
+$value = null;
 
-    //amount of elements in an array
-    print_r(count($arr)).PHP_EOL;
-
-    // sum of all elements
-    print_r(array_sum($arr)).PHP_EOL;
-    showArray($arr);
-
-    sort($arr);
-    //sorted
-    showArray($arr);
-}
-function showArray(array $arr)
+while($value !='q')
 {
-    foreach ($arr as $value)
-    {
-        echo "Value is $value".PHP_EOL;
-    }
-    echo "==============================";
+printf("saisir une valeur numérique ou tapez 'q' pour quitter : ");
+$value = readline();
+if ($value == 'q')
+{
+continue;
 }
-showArrayInfo();
+array_push($tab, $value );
+
+echo "nombre de valeurs inscrites : " . count($tab) . "\n";
+echo "somme des valeurs : " . array_sum($tab) . "\n";
+
+echo "liste des valeurs du tableau : \n";
+foreach ($tab as $element)
+{
+echo $element . "\n";
+}
+
+sort($tab);
+
+echo "liste des valeurs triées du tableau : \n";
+foreach ($tab as $element)
+{
+echo $element . "\n";
+}
+
+}
